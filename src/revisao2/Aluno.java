@@ -1,12 +1,15 @@
 package revisao2;
 
-public class Aluno {
+import database.EntidadeBase;
+
+public class Aluno extends EntidadeBase {
 
 	private String nome;
 	private int ra;
 	private Endereco endereco;
 
 	public Aluno(String nome, int ra) {
+		super(ra);
 		this.nome = nome;
 		this.ra = ra;
 	}

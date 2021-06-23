@@ -1,11 +1,14 @@
 package revisao2;
 
-public class Materia {
+import database.EntidadeBase;
+
+public class Materia extends EntidadeBase {
 
 	private String titulo;
 	private double horas;
 
-	public Materia(String titulo, double horas) {
+	public Materia(Integer id,String titulo, double horas) {
+		super(id);
 		this.titulo = titulo;
 		this.horas = horas;
 	}
