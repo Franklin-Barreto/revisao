@@ -1,23 +1,19 @@
 package revisao.modelo;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 
 @Entity
-public class Aluno extends EntidadeBase {
+public class Student extends BaseEntity {
 
 	private String nome;
 	private int ra;
-	@OneToOne(cascade = CascadeType.ALL)
-	private Endereco endereco;
 
-	public Aluno(String nome, int ra) {
+	public Student(String nome, int ra) {
 		this.nome = nome;
 		this.ra = ra;
 	}
 
-	public Aluno() {
+	public Student() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -46,7 +42,7 @@ public class Aluno extends EntidadeBase {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Aluno other = (Aluno) obj;
+		Student other = (Student) obj;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;

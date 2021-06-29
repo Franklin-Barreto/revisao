@@ -5,8 +5,8 @@
 	<!-- unidade de persistencia -->
 	<persistence-unit name="escola" transaction-type="RESOURCE_LOCAL">
 		<!-- Aqui são listadas todas as entidades -->
-		<class>revisao.modelo.Aluno</class>
-		<class>revisao.modelo.Endereco</class>
+		<class>revisao.modelo.Student</class>
+		<class>revisao.modelo.Subject</class>
 		<properties>
 			<!-- Propriedades JDBC -->
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />

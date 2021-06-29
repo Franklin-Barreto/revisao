@@ -3,7 +3,7 @@ package revisao.modelo;
 import javax.persistence.Entity;
 
 @Entity
-public class Endereco extends EntidadeBase {
+public class Endereco extends BaseEntity {
 
 	private String logradouro;
 	private int numero;

@@ -4,9 +4,9 @@ import java.util.Set;
 
 public interface Crud<T> {
 
-	void adiciona(T entidade);
-	T buscaPorId(int id);
-	int totalRegistros();
-	Set<T> buscarTodos();
+	void save(T entity);
+	T find(int id);
+	int totalRecords();
+	Set<T> findAll();
 	void remove(int id);
 }
