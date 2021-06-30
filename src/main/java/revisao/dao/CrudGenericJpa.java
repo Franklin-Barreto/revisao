@@ -20,8 +20,15 @@ public class CrudGenericJpa<T> {
 	}
 
 	@SuppressWarnings("hiding")
-	public <T>T buscarPorId(Class<T> clazz, int id) {
+	public <T> T buscarPorId(Class<T> clazz, int id) {
 		return em.find(clazz, id);
+	}
+
+	@SuppressWarnings("hiding")
+	public <T>void remove(Class<T> class1, int id) {
+		em.getTransaction().begin();
+		em.remove(buscarPorId(class1, id));
+		em.getTransaction().commit();
 	}
 
 }

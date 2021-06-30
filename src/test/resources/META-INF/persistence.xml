@@ -8,6 +8,7 @@
 		<class>revisao.modelo.Aluno</class>
 		<class>revisao.modelo.Endereco</class>
 		<class>revisao.modelo.Materia</class>
+		<class>revisao.modelo.Curso</class>
 		<properties>
 			<!-- Propriedades JDBC -->
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />

@@ -1,16 +1,23 @@
 package revisao.modelo;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Aluno extends EntidadeBase {
 
 	private String nome;
 	private int ra;
-	@OneToOne(cascade = CascadeType.ALL)
-	private Endereco endereco;
+	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
+	private List<Endereco> enderecos;
+	@ManyToMany(mappedBy = "alunos")
+	private List<Curso> cursos = new ArrayList<>();
 
 	public Aluno(String nome, int ra) {
 		this.nome = nome;
@@ -56,5 +63,20 @@ public class Aluno extends EntidadeBase {
 			return false;
 		return true;
 	}
+
+	public void adicionaCurso(Curso curso) {
+		curso.setAluno(this);
+		this.cursos.add(curso);
+	}
+
+	public List<Curso> getCursos() {
+		return Collections.unmodifiableList(cursos);
+	}
+
+	public Integer quantidadeCursos() {
+		return cursos.size();
+	}
+	
+	
 
 }

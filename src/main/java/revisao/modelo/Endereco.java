@@ -1,6 +1,8 @@
 package revisao.modelo;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Endereco extends EntidadeBase {
@@ -10,6 +12,9 @@ public class Endereco extends EntidadeBase {
 	private String bairro;
 	private String cidade;
 	private String estado;
+	@ManyToOne
+	@JoinColumn(name = "aluno_fk")
+	private Aluno aluno;
 
 	public Endereco(String logradouro, int numero, String bairro, String cidade, String estado) {
 		this.logradouro = logradouro;

@@ -19,18 +19,18 @@ public class AlunoDaoJpaTest {
 		jpa = new AlunoDaoJpa();
 		aluno = new Aluno("José Carlos", 14587);
 		aluno2 = new Aluno("Antonio Carlos", 74587);
-		jpa.adiciona(aluno);
+		jpa.salva(aluno);
 	}
 
 	@Test
 	void adicionaAlunoTest() {
-		jpa.adiciona(aluno2);
+		jpa.salva(aluno2);
 		assertEquals(2, aluno2.getId());
 	}
 
 	@Test
 	void buscaAlunoPorIdTest() {
-		Aluno doBanco = jpa.buscaPorId(1);
+		Aluno doBanco = jpa.buscarPorId(1);
 		assertEquals("José Carlos", doBanco.getNome());
 	}
 }

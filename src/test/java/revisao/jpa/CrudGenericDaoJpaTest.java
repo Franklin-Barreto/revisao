@@ -37,4 +37,11 @@ public class CrudGenericDaoJpaTest {
 		Aluno joao = crud.buscarPorId(Aluno.class, 1);
 		assertEquals("João", joao.getNome());
 	}
+	
+	@Test
+	void removeTest() {
+		crud.remove(Aluno.class,1);
+		assertEquals(1, crud.totaRegistros(Aluno.class));
+	}
+	
 }
