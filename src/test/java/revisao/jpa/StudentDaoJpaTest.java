@@ -9,18 +9,18 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import revisao.dao.CrudGenericJpa;
+import revisao.dao.StudentDao;
 import revisao.modelo.BaseEntity;
 import revisao.modelo.Student;
 import revisao.modelo.Subject;
 
-public class CrudGenericJpaTest {
+public class StudentDaoJpaTest {
 
-	private CrudGenericJpa<BaseEntity> crud;
+	private StudentDao crud;
 	
 	@BeforeEach
 	void initialize() {
-		crud = new CrudGenericJpa<>();
+		crud = new StudentDao();
 		Set<BaseEntity> entities = new HashSet<>(
 				Arrays.asList(
 						new Student("Franklin", 1254),

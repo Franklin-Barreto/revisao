@@ -1,13 +1,13 @@
 package revisao.dao;
 
-import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 
 import revisao.modelo.BaseEntity;
-import revisao.modelo.Student;
 
-public class CrudGenericJpa<T> {
+public class CrudGenericJpa<J> implements Crud<J> {
 
 	private EntityManager em = JpaUtil.createEntityManager();
 
@@ -17,19 +17,23 @@ public class CrudGenericJpa<T> {
 		em.getTransaction().commit();
 	}
 
-	public int totalRecords(Class<Student> clazz) {
-		return em.createQuery("from "+clazz.getName()).getResultList().size();
+	public <T> T find(Class<T> clazz, int id) {
+		return em.find(clazz, id);
 	}
 
-	public <T>T find(Class<?> clazz, int id) {
-		return  (T) em.find(clazz, id);
+	@Override
+	public <T> Set<T> findAll(Class<T> clazz) {
+		return em.createQuery("from " + clazz.getName(),clazz).getResultStream().collect(Collectors.toSet());
 	}
-	
-	static <T> List<T> add(List<T> list, T a, T b) {
-	    list.add(a);
-	    list.add(b);
-	    return list;
+
+	@Override
+	public void remove(BaseEntity entity) {
+		em.remove(entity);
 	}
-	
+
+	@Override
+	public <T> int totalRecords(Class<T> clazz) {
+		return em.createQuery("from " + clazz.getName()).getResultList().size();
+	}
 
 }
