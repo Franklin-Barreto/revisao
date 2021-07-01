@@ -1,27 +1,32 @@
 package revisao.modelo;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Endereco extends BaseEntity {
+public class Endereco extends EntidadeBase {
 
 	private String logradouro;
 	private int numero;
 	private String bairro;
 	private String cidade;
 	private String estado;
+	private String complemento;
+	@OneToOne(fetch = FetchType.LAZY)
+	private Espectador espectador;
 
-	public Endereco(String logradouro, int numero, String bairro, String cidade, String estado) {
+	public Endereco(String logradouro, int numero, String bairro, String cidade, String estado,String complemento) {
 		this.logradouro = logradouro;
 		this.numero = numero;
 		this.bairro = bairro;
 		this.cidade = cidade;
 		this.estado = estado;
+		this.complemento = complemento;
 	}
 	
-	public Endereco() {
-		// TODO Auto-generated constructor stub
-	}
+	protected Endereco() {}
+	
 
 	public String getLogradouro() {
 		return logradouro;
@@ -41,6 +46,14 @@ public class Endereco extends BaseEntity {
 
 	public String getEstado() {
 		return estado;
+	}
+	
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setEspectador(Espectador espectador) {
+		this.espectador = espectador;
 	}
 
 }

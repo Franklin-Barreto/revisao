@@ -6,13 +6,13 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class BaseEntity {
+public class EntidadeBase {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	public BaseEntity() {
+	public EntidadeBase() {
 		// TODO Auto-generated constructor stub
 	}
 	public Integer getId() {

@@ -1,39 +1,50 @@
 package revisao.dao;
 
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import revisao.modelo.BaseEntity;
+import revisao.modelo.EntidadeBase;
 
 public class CrudGenericJpa<J> implements Crud<J> {
 
-	private EntityManager em = JpaUtil.createEntityManager();
+	protected EntityManager em;
+	
+	public CrudGenericJpa(EntityManager em) {
+		this.em = em;
+	}	
 
-	public void save(BaseEntity entity) {
+	public void salva(EntidadeBase entity) {
 		em.getTransaction().begin();
 		em.persist(entity);
 		em.getTransaction().commit();
 	}
 
-	public <T> T find(Class<T> clazz, int id) {
+	public <T> T buscaPorId(Class<T> clazz, int id) {
 		return em.find(clazz, id);
 	}
 
 	@Override
-	public <T> Set<T> findAll(Class<T> clazz) {
-		return em.createQuery("from " + clazz.getName(),clazz).getResultStream().collect(Collectors.toSet());
+	public <T> List<T> buscaTodos(Class<T> clazz) {
+		return em.createQuery("from " + clazz.getName(),clazz).getResultList();
 	}
 
 	@Override
-	public void remove(BaseEntity entity) {
+	public void remove(EntidadeBase entity) {
+		em.getTransaction().begin();
 		em.remove(entity);
+		em.getTransaction().commit();
 	}
 
 	@Override
-	public <T> int totalRecords(Class<T> clazz) {
+	public <T> int totalRegistros(Class<T> clazz) {
 		return em.createQuery("from " + clazz.getName()).getResultList().size();
+	}
+	
+	public void atualiza(EntidadeBase entidade) {
+		em.getTransaction().begin();
+		em.merge(entidade);
+		em.getTransaction().commit();
 	}
 
 }

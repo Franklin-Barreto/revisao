@@ -1,18 +1,18 @@
 package revisao.dao;
 
-import java.util.Set;
+import java.util.List;
 
-import revisao.modelo.BaseEntity;
+import revisao.modelo.EntidadeBase;
 
 public interface Crud<J> {
 
-	void save(BaseEntity entity);
+	void salva(EntidadeBase entity);
 
-	<T> T find(Class<T> clazz, int id);
+	<T> T buscaPorId(Class<T> clazz, int id);
 
-	<T> int totalRecords(Class<T> clazz);
+	<T> int totalRegistros(Class<T> clazz);
 
-	<T> Set<T> findAll(Class<T> clazz);
+	<T> List<T> buscaTodos(Class<T> clazz);
 
-	void remove(BaseEntity entity);
+	void remove(EntidadeBase entity);
 }

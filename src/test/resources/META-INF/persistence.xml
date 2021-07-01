@@ -3,32 +3,50 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0">
 	<!-- unidade de persistencia -->
-	<persistence-unit name="escola" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="eventosH2"
+		transaction-type="RESOURCE_LOCAL">
 		<!-- Aqui são listadas todas as entidades -->
-		<class>revisao.modelo.Student</class>
-		<class>revisao.modelo.Subject</class>
+		<class>revisao.modelo.Evento</class>
+		<class>revisao.modelo.Espectador</class>
+		<class>revisao.modelo.Endereco</class>
+		<class>revisao.modelo.Palestrante</class>
+		<class>revisao.modelo.Palestra</class>
+		<class>revisao.modelo.EventoPalestra</class>
+		<class>revisao.modelo.EventoInscricao</class>
 		<properties>
 			<!-- Propriedades JDBC -->
-			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:escola" />
+			<property name="javax.persistence.jdbc.driver"
+				value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:h2:mem:eventosdb" />
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="javax.persistence.sql-load-script-source" value="META-INF/data.sql"/>
+			<property name="javax.persistence.sql-load-script-source"
+				value="META-INF/data.sql" />
 			<!-- Configurações específicas do Hibernate -->
-			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.H2Dialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
 	</persistence-unit>
-	<persistence-unit name="cantinam"
+	<persistence-unit name="eventosMysql"
 		transaction-type="RESOURCE_LOCAL">
+		<class>revisao.modelo.Evento</class>
+		<class>revisao.modelo.Espectador</class>
+		<class>revisao.modelo.Endereco</class>
+		<class>revisao.modelo.Palestrante</class>
+		<class>revisao.modelo.Palestra</class>
+		<class>revisao.modelo.EventoPalestra</class>
+		<class>revisao.modelo.EventoInscricao</class>
+
 		<properties>
 			<!-- Propriedades JDBC -->
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.cj.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/cantina?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=UTC" />
+				value="jdbc:mysql://localhost:3306/eventosdb?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=UTC" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password"
 				value="root" />
@@ -40,9 +58,10 @@
 				value="org.hibernate.dialect.MySQL8Dialect" />
 			<property name="hibernate.dialect.storage_engine"
 				value="innodb" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
-	</persistence-unit>	
+	</persistence-unit>
+
 </persistence>
