@@ -10,7 +10,7 @@ public interface Crud<J> {
 
 	<T> T buscaPorId(Class<T> clazz, int id);
 
-	<T> int totalRegistros(Class<T> clazz);
+	<T> Integer totalRegistros(Class<T> clazz);
 
 	<T> List<T> buscaTodos(Class<T> clazz);
 
