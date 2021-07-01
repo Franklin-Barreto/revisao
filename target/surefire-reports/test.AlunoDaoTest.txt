@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: test.AlunoDaoTest
--------------------------------------------------------------------------------
-Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.019 s <<< FAILURE! - in test.AlunoDaoTest
-exibirAlunoPorRa  Time elapsed: 0.015 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <revisao.modelo.Aluno@448deae> but was: <null>
-	at test.AlunoDaoTest.exibirAlunoPorRa(AlunoDaoTest.java:33)
-
